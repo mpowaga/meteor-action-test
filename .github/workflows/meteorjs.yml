@@ -1,0 +1,20 @@
+name: Meteor CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, window-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: meteorengineer/setup-meteor@test
+    - name: Test (${{ matrix.os }})
+      run: |
+        meteor npm ci
+        meteor npm test
