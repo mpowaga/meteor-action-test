@@ -9,12 +9,13 @@ jobs:
     
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [windows-latest]
 
     steps:
     - uses: actions/checkout@v1
     - uses: meteorengineer/setup-meteor@v1
     - name: Test (${{ matrix.os }})
       run: |
+        choco config get cacheLocation fullPath
         meteor npm ci
         meteor npm test
