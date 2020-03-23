@@ -16,6 +16,4 @@ jobs:
     - uses: meteorengineer/setup-meteor@v1
     - name: Test (${{ matrix.os }})
       run: |
-        choco config get cacheLocation fullPath
-        meteor npm ci
-        meteor npm test
+        choco config get cacheLocation
